@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>محاسبه درصد تیزهوشان و نمونه دولتی نهم</title>
+    <title>محاسبه درصد تیزهوشان و نمونه دولتی</title>
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/iransans-web@latest/css/iransans.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -17,10 +17,12 @@
             --white: #ffffff;
             --booklet1-bg: #e8f4fc;
             --booklet2-bg: #f5e8fc;
+            --sixth-primary: #e67e22;
+            --sixth-secondary: #d35400;
         }
         
         .header-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 20px auto;
             text-align: center;
             padding: 15px;
@@ -77,9 +79,15 @@
             margin: 0;
         }
         
-        .calculator-container {
-            max-width: 800px;
+        .calculators-container {
+            max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .calculator-container {
             background: var(--white);
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -91,6 +99,10 @@
             color: var(--white);
             padding: 15px;
             text-align: center;
+        }
+        
+        .sixth-header {
+            background-color: var(--sixth-primary);
         }
         
         .calculator-body {
@@ -120,6 +132,10 @@
             margin: 0;
         }
         
+        .sixth-booklet .booklet-title {
+            background-color: var(--sixth-primary);
+        }
+        
         .booklet-2 .booklet-title {
             background-color: var(--sample);
         }
@@ -138,6 +154,10 @@
             margin-bottom: 10px;
             padding-bottom: 5px;
             border-bottom: 1px solid var(--border);
+        }
+        
+        .sixth-subject .subject-title {
+            color: var(--sixth-primary);
         }
         
         .input-group {
@@ -173,6 +193,11 @@
             padding-bottom: 5px;
         }
         
+        .sixth-grade h4 {
+            color: var(--sixth-primary);
+            border-bottom: 1px solid var(--sixth-primary);
+        }
+        
         .calculate-btn {
             width: 100%;
             padding: 12px;
@@ -187,8 +212,16 @@
             transition: background-color 0.3s;
         }
         
+        .sixth-calculate {
+            background-color: var(--sixth-primary);
+        }
+        
         .calculate-btn:hover {
             background-color: #2980b9;
+        }
+        
+        .sixth-calculate:hover {
+            background-color: var(--sixth-secondary);
         }
         
         .results-container {
@@ -232,6 +265,10 @@
             z-index: 1;
         }
         
+        .sixth-progress {
+            background-color: var(--sixth-secondary);
+        }
+        
         .result-text {
             position: relative;
             z-index: 3;
@@ -245,9 +282,19 @@
             font-size: 18px;
         }
         
+        .sixth-final {
+            background-color: var(--sixth-primary);
+        }
+        
         .sample-result {
             background-color: var(--sample);
             color: var(--white);
+        }
+        
+        @media (max-width: 992px) {
+            .calculators-container {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 768px) {
@@ -273,183 +320,343 @@
         </div>
     </div>
 
-    <div class="calculator-container">
-        <div class="calculator-header">
-            <h2>محاسبه درصد آزمون تیزهوشان و نمونه دولتی نهم</h2>
+    <div class="calculators-container">
+        <!-- ماشین حساب ششم -->
+        <div class="calculator-container">
+            <div class="calculator-header sixth-header">
+                <h2>محاسبه درصد آزمون تیزهوشان ششم</h2>
+            </div>
+            
+            <div class="calculator-body">
+                <!-- دفترچه اول - استعداد تحصیلی -->
+                <div class="booklet booklet-1 sixth-booklet">
+                    <h3 class="booklet-title">دفترچه اول - استعداد تحصیلی</h3>
+                    
+                    <div class="subject-box sixth-subject">
+                        <h4 class="subject-title">ریاضی (20 سوال - ضریب 3)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-math-correct" min="0" max="20" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-math-wrong" min="0" max="20" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box sixth-subject">
+                        <h4 class="subject-title">علوم تجربی (20 سوال - ضریب 2)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-science-correct" min="0" max="20" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-science-wrong" min="0" max="20" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box sixth-subject">
+                        <h4 class="subject-title">فارسی (20 سوال - ضریب 2)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-farsi-correct" min="0" max="20" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-farsi-wrong" min="0" max="20" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box sixth-subject">
+                        <h4 class="subject-title">هدیه‌های آسمان (10 سوال - ضریب 1)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-religion-correct" min="0" max="10" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-religion-wrong" min="0" max="10" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box sixth-subject">
+                        <h4 class="subject-title">مطالعات اجتماعی (10 سوال - ضریب 1)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-studies-correct" min="0" max="10" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-studies-wrong" min="0" max="10" value="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- دفترچه دوم - استعداد تحلیلی -->
+                <div class="booklet booklet-2">
+                    <h3 class="booklet-title">دفترچه دوم - استعداد تحلیلی (30 سوال)</h3>
+                    
+                    <div class="subject-box">
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="sixth-iq-correct" min="0" max="30" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="sixth-iq-wrong" min="0" max="30" value="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="calculate-btn sixth-calculate" id="sixth-calculate-btn">محاسبه درصدها</button>
+                
+                <!-- نتایج -->
+                <div class="results-container">
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-math"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-math">ریاضی: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-science"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-science">علوم: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-farsi"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-farsi">فارسی: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-religion"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-religion">هدیه‌های آسمان: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-studies"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-studies">مطالعات: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-iq"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-iq">هوش: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar sixth-progress" id="sixth-progress-booklet1"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="sixth-result-booklet1">درصد کل دفترچه اول: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item final-result sixth-final">
+                        <div class="result-content">
+                            <div id="sixth-finalResult">درصد نهایی تیزهوشان: -</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="calculator-body">
-            <!-- دفترچه اول - استعداد تحصیلی -->
-            <div class="booklet booklet-1">
-                <h3 class="booklet-title">دفترچه اول - استعداد تحصیلی</h3>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">ریاضی (15 سوال - ضریب 3)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-math-correct" min="0" max="15" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-math-wrong" min="0" max="15" value="0">
-                    </div>
-                </div>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">علوم تجربی (15 سوال - ضریب 3)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-science-correct" min="0" max="15" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-science-wrong" min="0" max="15" value="0">
-                    </div>
-                </div>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">فارسی (15 سوال - ضریب 2)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-farsi-correct" min="0" max="15" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-farsi-wrong" min="0" max="15" value="0">
-                    </div>
-                </div>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">مطالعات اجتماعی (10 سوال - ضریب 2)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-studies-correct" min="0" max="10" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-studies-wrong" min="0" max="10" value="0">
-                    </div>
-                </div>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">قرآن و پیام‌های آسمان (10 سوال - ضریب 2)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-quran-correct" min="0" max="10" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-quran-wrong" min="0" max="10" value="0">
-                    </div>
-                </div>
-                
-                <div class="subject-box">
-                    <h4 class="subject-title">عربی (10 سوال - ضریب 1)</h4>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-arabic-correct" min="0" max="10" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-arabic-wrong" min="0" max="10" value="0">
-                    </div>
-                </div>
+
+        <!-- ماشین حساب نهم -->
+        <div class="calculator-container">
+            <div class="calculator-header">
+                <h2>محاسبه درصد آزمون تیزهوشان و نمونه دولتی نهم</h2>
             </div>
             
-            <!-- دفترچه دوم - استعداد تحلیلی -->
-            <div class="booklet booklet-2">
-                <h3 class="booklet-title">دفترچه دوم - استعداد تحلیلی (50 سوال)</h3>
+            <div class="calculator-body">
+                <!-- دفترچه اول - استعداد تحصیلی -->
+                <div class="booklet booklet-1">
+                    <h3 class="booklet-title">دفترچه اول - استعداد تحصیلی</h3>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">ریاضی (15 سوال - ضریب 3)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-math-correct" min="0" max="15" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-math-wrong" min="0" max="15" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">علوم تجربی (15 سوال - ضریب 3)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-science-correct" min="0" max="15" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-science-wrong" min="0" max="15" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">فارسی (15 سوال - ضریب 2)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-farsi-correct" min="0" max="15" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-farsi-wrong" min="0" max="15" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">مطالعات اجتماعی (10 سوال - ضریب 2)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-studies-correct" min="0" max="10" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-studies-wrong" min="0" max="10" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">قرآن و پیام‌های آسمان (10 سوال - ضریب 2)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-quran-correct" min="0" max="10" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-quran-wrong" min="0" max="10" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="subject-box">
+                        <h4 class="subject-title">عربی (10 سوال - ضریب 1)</h4>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-arabic-correct" min="0" max="10" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-arabic-wrong" min="0" max="10" value="0">
+                        </div>
+                    </div>
+                </div>
                 
-                <div class="subject-box">
+                <!-- دفترچه دوم - استعداد تحلیلی -->
+                <div class="booklet booklet-2">
+                    <h3 class="booklet-title">دفترچه دوم - استعداد تحلیلی (50 سوال)</h3>
+                    
+                    <div class="subject-box">
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های درست:</label>
+                            <input type="number" id="ninth-iq-correct" min="0" max="50" value="0">
+                        </div>
+                        <div class="input-group">
+                            <label>تعداد پاسخ‌های غلط:</label>
+                            <input type="number" id="ninth-iq-wrong" min="0" max="50" value="0">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- معدل کتبی -->
+                <div class="grade-input">
+                    <h4>معدل کتبی نهم (برای محاسبه نمونه دولتی)</h4>
                     <div class="input-group">
-                        <label>تعداد پاسخ‌های درست:</label>
-                        <input type="number" id="ninth-iq-correct" min="0" max="50" value="0">
-                    </div>
-                    <div class="input-group">
-                        <label>تعداد پاسخ‌های غلط:</label>
-                        <input type="number" id="ninth-iq-wrong" min="0" max="50" value="0">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- معدل کتبی -->
-            <div class="grade-input">
-                <h4>معدل کتبی نهم (برای محاسبه نمونه دولتی)</h4>
-                <div class="input-group">
-                    <label>معدل کتبی (از 20):</label>
-                    <input type="number" id="ninth-grade" min="0" max="20" step="0.01" value="20">
-                </div>
-            </div>
-            
-            <button class="calculate-btn" id="ninth-calculate-btn">محاسبه درصدها</button>
-            
-            <!-- نتایج -->
-            <div class="results-container">
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-math"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-math">ریاضی: -</div>
+                        <label>معدل کتبی (از 20):</label>
+                        <input type="number" id="ninth-grade" min="0" max="20" step="0.01" value="20">
                     </div>
                 </div>
                 
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-science"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-science">علوم: -</div>
-                    </div>
-                </div>
+                <button class="calculate-btn" id="ninth-calculate-btn">محاسبه درصدها</button>
                 
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-farsi"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-farsi">فارسی: -</div>
+                <!-- نتایج -->
+                <div class="results-container">
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-math"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-math">ریاضی: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-studies"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-studies">مطالعات: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-science"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-science">علوم: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-quran"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-quran">قرآن: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-farsi"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-farsi">فارسی: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-iq"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-iq">هوش: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-studies"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-studies">مطالعات: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item">
-                    <div class="progress-full"></div>
-                    <div class="progress-bar" id="ninth-progress-booklet1"></div>
-                    <div class="result-content">
-                        <div class="result-text" id="ninth-result-booklet1">درصد کل دفترچه اول: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-quran"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-quran">قرآن: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item final-result">
-                    <div class="result-content">
-                        <div id="ninth-finalResult">درصد نهایی تیزهوشان: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-iq"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-iq">هوش: -</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="result-item final-result sample-result">
-                    <div class="result-content">
-                        <div id="ninth-sampleResult">درصد نهایی نمونه دولتی: -</div>
+                    
+                    <div class="result-item">
+                        <div class="progress-full"></div>
+                        <div class="progress-bar" id="ninth-progress-booklet1"></div>
+                        <div class="result-content">
+                            <div class="result-text" id="ninth-result-booklet1">درصد کل دفترچه اول: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item final-result">
+                        <div class="result-content">
+                            <div id="ninth-finalResult">درصد نهایی تیزهوشان: -</div>
+                        </div>
+                    </div>
+                    
+                    <div class="result-item final-result sample-result">
+                        <div class="result-content">
+                            <div id="ninth-sampleResult">درصد نهایی نمونه دولتی: -</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -457,6 +664,69 @@
     </div>
 
     <script>
+        // محاسبات آزمون ششم
+        document.getElementById('sixth-calculate-btn').addEventListener('click', function() {
+            try {
+                // دریافت مقادیر دفترچه اول
+                const mathCorrect = parseInt(document.getElementById('sixth-math-correct').value) || 0;
+                const mathWrong = parseInt(document.getElementById('sixth-math-wrong').value) || 0;
+                const scienceCorrect = parseInt(document.getElementById('sixth-science-correct').value) || 0;
+                const scienceWrong = parseInt(document.getElementById('sixth-science-wrong').value) || 0;
+                const farsiCorrect = parseInt(document.getElementById('sixth-farsi-correct').value) || 0;
+                const farsiWrong = parseInt(document.getElementById('sixth-farsi-wrong').value) || 0;
+                const religionCorrect = parseInt(document.getElementById('sixth-religion-correct').value) || 0;
+                const religionWrong = parseInt(document.getElementById('sixth-religion-wrong').value) || 0;
+                const studiesCorrect = parseInt(document.getElementById('sixth-studies-correct').value) || 0;
+                const studiesWrong = parseInt(document.getElementById('sixth-studies-wrong').value) || 0;
+                
+                // دریافت مقادیر دفترچه دوم
+                const iqCorrect = parseInt(document.getElementById('sixth-iq-correct').value) || 0;
+                const iqWrong = parseInt(document.getElementById('sixth-iq-wrong').value) || 0;
+                
+                // محاسبه نمره خام هر درس
+                const rawMath = Math.max(0, mathCorrect - (mathWrong / 3));
+                const rawScience = Math.max(0, scienceCorrect - (scienceWrong / 3));
+                const rawFarsi = Math.max(0, farsiCorrect - (farsiWrong / 3));
+                const rawReligion = Math.max(0, religionCorrect - (religionWrong / 3));
+                const rawStudies = Math.max(0, studiesCorrect - (studiesWrong / 3));
+                const rawIQ = Math.max(0, iqCorrect - (iqWrong / 3));
+                
+                // محاسبه درصد هر درس
+                const percentMath = (rawMath / 20) * 100;
+                const percentScience = (rawScience / 20) * 100;
+                const percentFarsi = (rawFarsi / 20) * 100;
+                const percentReligion = (rawReligion / 10) * 100;
+                const percentStudies = (rawStudies / 10) * 100;
+                const percentIQ = (rawIQ / 30) * 100;
+                
+                // محاسبه درصد کل دفترچه اول با ضرایب
+                const booklet1Score = (rawMath * 3) + (rawScience * 2) + (rawFarsi * 2) + 
+                                     (rawReligion * 1) + (rawStudies * 1);
+                const booklet1Max = (20 * 3) + (20 * 2) + (20 * 2) + (10 * 1) + (10 * 1);
+                const percentBooklet1 = (booklet1Score / booklet1Max) * 100;
+                
+                // محاسبه درصد نهایی تیزهوشان (میانگین دو دفترچه)
+                const tizhooshanPercent = (percentBooklet1 + percentIQ) / 2;
+                
+                // نمایش نتایج
+                showResult('sixth-result-math', 'sixth-progress-math', 'ریاضی', percentMath);
+                showResult('sixth-result-science', 'sixth-progress-science', 'علوم', percentScience);
+                showResult('sixth-result-farsi', 'sixth-progress-farsi', 'فارسی', percentFarsi);
+                showResult('sixth-result-religion', 'sixth-progress-religion', 'هدیه‌های آسمان', percentReligion);
+                showResult('sixth-result-studies', 'sixth-progress-studies', 'مطالعات', percentStudies);
+                showResult('sixth-result-iq', 'sixth-progress-iq', 'هوش', percentIQ);
+                showResult('sixth-result-booklet1', 'sixth-progress-booklet1', 'درصد کل دفترچه اول', percentBooklet1);
+                
+                document.getElementById('sixth-finalResult').textContent = 
+                    `درصد نهایی تیزهوشان: ${Math.max(0, Math.min(100, tizhooshanPercent)).toFixed(2)}%`;
+                    
+            } catch(error) {
+                console.error('خطا در محاسبه:', error);
+                alert('خطایی در محاسبه رخ داده است. لطفاً مقادیر را بررسی کنید.');
+            }
+        });
+
+        // محاسبات آزمون نهم
         document.getElementById('ninth-calculate-btn').addEventListener('click', function() {
             try {
                 // دریافت مقادیر دفترچه اول
